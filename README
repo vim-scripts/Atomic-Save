@@ -1,0 +1,8 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=3641
+
+This is an atomic save function for vim.  IOW, this is an atomic write ('w') function for vim.  It makes sure that there is always a fully-written copy of the file in place to be read by other programs.  It uses the system 'mv' since vim's rename() function removes the destination file rather than atomically replacing it.
+
+To use it, you enable it as described below, and then 'w' your file like normal.
+
+NOTE: if using windows, see the note below.
+
