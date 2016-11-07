@@ -9,7 +9,10 @@ function! AtomicSave()
     echo "error writing file"|
     return|
   endif|
-
+  
+  " chown for the cases when superuser edit someone else's file
+  call system('! test -e ' . l:filename . ' || chown --reference=' . l:filename . ' ' . l:tempfile)|
+  
   " it's hard to grab the perms to make this portable. see http://mywiki.wooledge.org/BashFAQ/087
   call system('! test -e ' . l:filename . ' || chmod --reference=' . l:filename . ' ' . l:tempfile)|
   if v:shell_error|
